@@ -48,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603546723912</updated>
       <workItem from="1603546726927" duration="826000" />
-      <workItem from="1603594124734" duration="11976000" />
+      <workItem from="1603594124734" duration="14584000" />
     </task>
     <servers />
   </component>
@@ -76,5 +76,17 @@
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="303" y="211" width="672" height="678" key="search.everywhere.popup/0.0.1280.984@0.0.1280.984" timestamp="1603597391772" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public/javascripts/zyrcEv.js</url>
+          <line>317</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -315,7 +315,7 @@ function init2() {
             },
             {
                 name: '阶段阶梯曲线',
-                color: 'rgb(214,214,214)',
+                color: 'rgb(191,191,191)',
                 type: 'line',
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
                 sampling: 'average',
