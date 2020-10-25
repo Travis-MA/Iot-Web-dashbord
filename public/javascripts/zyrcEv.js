@@ -1,3 +1,5 @@
+
+
 $(function () {
 
 
@@ -9,6 +11,8 @@ var dataPressure;
 var dataTempIn;
 var dataTempOut;
 var dataState;
+
+var stateAnalysis = [];
 
 var zeroOffset = 7;
 var offsetDate = new Date();
@@ -84,18 +88,17 @@ function diffTime(EndTime, StartTime) {
 
 }
 
-function generateData(jsdata) {
+function generateData(jsdata, scale) {
 
 
     var categoryData = [];
     var valueData = [];
-    var markLine = [];
     var rec;
 
     for (var i in jsdata) {
         rec = jsdata[i];
         categoryData.push(echarts.format.formatTime('yyyy-MM-dd\nhh:mm:ss', new Date(parseInt(rec.t) * 1000)));
-        valueData.push(rec.v);
+        valueData.push(rec.v*scale);
     }
 
     return {
@@ -125,7 +128,7 @@ function init1() {
     now.setTime(now.getTime() + dateCtrl * 24 * 60 * 60 * 1000);
     console.log(dateString(now));
 
-    fetch("/zyrc/zyevId", {
+    fetch("/zyrc/zyevData", {
         method: "GET"
     }).then(function (res) {
         return res.json();
@@ -142,22 +145,46 @@ function init1() {
         } else {
             $('#endTime').text(endTimeStr);
         }
-        $('#text3').text("记录时长:   " + diffTimeStr);
-        $('#text4').text("采样点数：2403");
-        $('#text5').text("终端输入：正常");
-        $('#text6').text("传感器输入：正常");
-
         var recordData = data.data;
-        dataPressure = generateData(recordData.pressure);
-        dataTempIn = generateData(recordData.tempIn);
-        dataTempOut = generateData(recordData.tempOut);
-        dataState = generateData(recordData.state);
+        $('#text3').text("记录时长:   " + diffTimeStr);
+        $('#text4').text("采样点数：   "+ recordData.pressure.length);
+
+
+        dataPressure = generateData(recordData.pressure,1);
+        dataTempIn = generateData(recordData.tempIn,1);
+        dataTempOut = generateData(recordData.tempOut,1);
+        dataState = generateData(recordData.state, 1/2500);
 
         init2();
 
     });
 
+    fetch("/zyrc/zyevAnalysis", {
+        method: "GET"
+    }).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        console.log(data)
+        console.log(data.devInput)
+        $('#text5').text("终端输入：  " + data.devInput);
+        $('#text6').text("传感器输入：  " + data.sensorInput);
 
+        var stateInfo = data.stateInfo;
+        if (stateInfo.type === 1){
+            var stateList = stateInfo.state;
+            var categoryData = [];
+            var valueData = [];
+            console.log("stateList:    "+stateList)
+            for (var i in stateList){
+                var state = stateList[i]
+                var time = echarts.format.formatTime('yyyy-MM-dd\nhh:mm:ss', new Date(parseInt(state.startTime) * 1000));
+
+                stateAnalysis.push({x:time, y:0.5});
+            }
+            console.log("stateAnalysis:    "+stateAnalysis)
+        }
+
+    });
 }
 
 
@@ -284,6 +311,7 @@ function init2() {
         ],
 
         series: [
+
             {
                 name: '釜表温度',
                 color: 'rgb(0,145,255)',
@@ -322,6 +350,10 @@ function init2() {
                 smooth: 'false',
                 show: false,
                 data: dataState.valueData,
+                markPoint: {
+                    data: stateAnalysis[0],
+                    symbol: "rect"
+                }
             }
 
         ],

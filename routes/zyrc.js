@@ -34,13 +34,27 @@ app.get('/zyev', function(req, res, next) {
 	res.sendFile(resolve(__dirname, '../views/zyrcEv.html'));
 });
 
-app.get('/zyevId', function(req, res, next) {
+app.get('/zyevData', function(req, res, next) {
 	var para_A;
-	//console.log('zyevID  Prefix:'+informJson.prefix);
+	//console.log('zyevData  Prefix:'+informJson.prefix);
 	OBSkit.getStr(informJson.prefix,para_A,function(contents,prefix,para_B){
 		var recordJson = JSON.parse(contents);
 		informJson.data = recordJson.data;
 		res.json(informJson);
+	});
+
+});
+
+app.get('/zyevAnalysis', function(req, res, next) {
+	var para_A;
+	var dataPrefix = informJson.prefix;
+	var Xindex = dataPrefix.indexOf('X');
+	var Yindex = dataPrefix.indexOf('Y');
+	var startTimeTemp = dataPrefix.substring(Xindex+4,Yindex);
+	var analysisPrefix = dataPrefix.substring(0, Xindex)+"R"+startTimeTemp;
+	OBSkit.getStr(analysisPrefix,para_A,function(contents,prefix,para_B){
+		var analysisRecordJson = JSON.parse(contents);
+		res.json(analysisRecordJson);
 	});
 
 });

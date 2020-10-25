@@ -48,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603546723912</updated>
       <workItem from="1603546726927" duration="826000" />
-      <workItem from="1603594124734" duration="14584000" />
+      <workItem from="1603594124734" duration="21814000" />
     </task>
     <servers />
   </component>
@@ -56,22 +56,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1236" height="263" key="GridCell.Tab.0.bottom" timestamp="1603600214925">
+    <state width="1236" height="182" key="GridCell.Tab.0.bottom" timestamp="1603640537665">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="263" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1603600214925" />
-    <state width="1236" height="263" key="GridCell.Tab.0.center" timestamp="1603600214925">
+    <state width="1236" height="182" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1603640537665" />
+    <state width="1236" height="182" key="GridCell.Tab.0.center" timestamp="1603640537662">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="263" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1603600214925" />
-    <state width="1236" height="263" key="GridCell.Tab.0.left" timestamp="1603600214925">
+    <state width="1236" height="182" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1603640537662" />
+    <state width="1236" height="182" key="GridCell.Tab.0.left" timestamp="1603640537661">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="263" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1603600214925" />
-    <state width="1236" height="263" key="GridCell.Tab.0.right" timestamp="1603600214925">
+    <state width="1236" height="182" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1603640537661" />
+    <state width="1236" height="182" key="GridCell.Tab.0.right" timestamp="1603640537664">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1236" height="263" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1603600214925" />
+    <state width="1236" height="182" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1603640537664" />
     <state x="303" y="211" width="672" height="678" key="search.everywhere.popup" timestamp="1603597391772">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
@@ -82,7 +82,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/javascripts/zyrcEv.js</url>
-          <line>317</line>
+          <line>345</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
