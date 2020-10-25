@@ -136,11 +136,11 @@ function init1() {
         var startTimeStr = timeString(new Date(parseInt(data.startTime)), 0);
         var endTimeStr = timeString(new Date(parseInt(data.endTime)), new Date(parseInt(data.startTime)));
         var diffTimeStr = diffTime(parseInt(data.endTime), parseInt(data.startTime));
-        $('#text1').text("记录开始时间:       " + startTimeStr);
+        $('#startTime').text("记录开始时间:       " + startTimeStr);
         if (endTimeStr.length > 6) {
-            $('#text2').text("记录结束时间:       " + endTimeStr);
+            $('#endTime').text("记录结束时间:       " + endTimeStr);
         } else {
-            $('#text2').text(endTimeStr);
+            $('#endTime').text(endTimeStr);
         }
         $('#text3').text("记录时长:   " + diffTimeStr);
         $('#text4').text("采样点数：2403");
@@ -286,7 +286,7 @@ function init2() {
         series: [
             {
                 name: '釜表温度',
-                color: 'rgba(27,67,171,0.69)',
+                color: 'rgb(0,145,255)',
                 type: 'line',
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
                 sampling: 'average',
@@ -296,7 +296,7 @@ function init2() {
             },
             {
                 name: '釜内温度',
-                color: 'rgb(219,186,0)',
+                color: 'rgb(14,219,4)',
                 type: 'line',
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
                 sampling: 'average',
@@ -306,7 +306,7 @@ function init2() {
             },
             {
                 name: '釜内压力',
-                color: 'rgba(248,36,22,0.69)',
+                color: 'rgb(248,10,0)',
                 type: 'line',
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
                 sampling: 'average',
@@ -315,7 +315,7 @@ function init2() {
             },
             {
                 name: '阶段阶梯曲线',
-                color: 'rgba(220,216,215,0.69)',
+                color: 'rgb(214,214,214)',
                 type: 'line',
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
                 sampling: 'average',

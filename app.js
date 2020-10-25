@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //参数‘/’可当作设置url的根显示页面，这里即”http://localhost:3000/“访问的页面设置为index.html
 app.get('/',(req,res)=>{
-    res.sendFile(__dirname+"/views/"+"zyrc.html")        //设置/ 下访问文件位置
+    res.sendFile(__dirname+"/views/"+"index.html")        //设置/ 下访问文件位置
 });
 
 
@@ -67,9 +67,3 @@ var server =app.listen(3000,()=>{
 var port =server.address().port
      console.log("【】访问地址http://localhost:%s",port)
 });
-
-
-
-//ScheduleProc.startScheduleCycle();
-
-
