@@ -56,9 +56,9 @@ function addNew(rec){
   var newMore = newTR.insertCell(5);
   //添加列内容
   newMore.innerHTML = "<a class='btn btn-lg btn-success' href='zyrc/zyev?id="+FuId+"&startTime="+StartTime+"&endTime="+EndTime+"&prefix="+prefix+"' target='_Blank' >查看</a>";
-  
- 
+
 }
+
 function dateString(now){
 
     var year = now.getFullYear();

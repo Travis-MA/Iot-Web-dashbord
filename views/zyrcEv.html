@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap-table.min.css" rel="stylesheet">
     <link href="/stylesheets/common.css" rel="stylesheet">
     <link href="/stylesheets/index.css" rel="stylesheet">
 
     <script src="/javascripts/js/jquery-3.3.1.min.js"></script>
     <script src="/javascripts/js/echarts.min.js"></script>
     <script src="/javascripts/js/bootstrap.min.js"></script>
+    <script src="/javascripts/js/bootstrap-table.min.js"></script>
     <script src="/javascripts/zyrcEv.js"></script>
 
 </head>
@@ -70,21 +72,43 @@
             </section>
 
 
-            <div>
-                <div class="div_any_child">
-                    <div id="name1" class="div_any_title">蒸压釜数据曲线</div>
-                    <p id="lineChart1" class="p_chart"></p>
-                </div>
+            <div class="div_any_child">
+                <div id="name1" class="div_any_title">蒸压釜数据曲线</div>
+                <p id="lineChart1" class="p_chart"></p>
             </div>
 
-            <div class="row">
-                <div class="col-xs-8 col-md-5">
+
+            <section class="row text-center" style=" margin-top: 25px">
+                <div class="col-sm-12 col-md-12 placeholder">
+                    <div class="alert alert-dark" role="alert">
+                        <table class="table table-hover" id="stateTable">
+                            <thead>
+                            <tr>
+                                <th rowspan="2">阶段</th>
+                                <th rowspan="2">时长</th>
+                                <th colspan="3">压力差</th>
+                                <th colspan="3">内温差</th>
+                                <th colspan="3">外温差</th>
+                            </tr>
+                            <tr>
+                                <th>本次</th>
+                                <th>本釜月平均</th>
+                                <th>总月平均</th>
+                                <th>本次</th>
+                                <th>本釜月平均</th>
+                                <th>总月平均</th>
+                                <th>本次</th>
+                                <th>本釜月平均</th>
+                                <th>总月平均</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 placeholder">
 
                 </div>
-                <div class="col-xs-10 col-md-7">
-                    <p id="pieChart" class="p_chart"></p>
-                </div>
-            </div>
+            </section>
 
 
         </main>
