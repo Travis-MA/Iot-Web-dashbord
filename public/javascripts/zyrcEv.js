@@ -83,12 +83,14 @@ function diffTime(EndTime, StartTime, mode) {
         EndTime = today;
     }
     var time = (EndTime - StartTime) / 1000
-    //var hour = Math.floor(time / 3600);
+    var hour = Math.floor(time / 3600);
     var min = Math.floor(time / 60);
 
     if (mode === 1 && EndTime === today){
         return '--';
-    }else {
+    }else if(mode === 0) {
+        return hour +'小时'+ Math.floor((time-hour*3600) / 60) +'分钟';
+    }else{
         return min + '分钟';
     }
 }
@@ -112,18 +114,6 @@ function generateData(jsdata, scale) {
     };
 }
 
-
-function banTime(startTime) {
-    var banOffset = new Date(startTime - zeroOffset * 60 * 60 * 1000);
-    var startDateStr = banOffset.getMonth() + 1 + '月' + banOffset.getDate() + '号';
-    var ban;
-    if (new Date(startTime).getHours() > zeroOffset && new Date(startTime).getHours() < 12 + zeroOffset) {
-        ban = '白班';
-    } else {
-        ban = '夜班';
-    }
-    return startDateStr + ban;
-}
 
 
 function addNew(rec){
@@ -161,13 +151,13 @@ function addNew(rec){
 
 
     //本釜月平均
-    var pressureDiff = newTR.insertCell(3);
-    pressureDiff.innerHTML = "--";
+    var pressureDiff1 = newTR.insertCell(3);
+    pressureDiff1.innerHTML = "--";
 
 
     //月平均
-    var pressureDiff = newTR.insertCell(4);
-    pressureDiff.innerHTML = "--";
+    var pressureDiff2 = newTR.insertCell(4);
+    pressureDiff2.innerHTML = "--";
 
 
     //内温差
@@ -186,12 +176,12 @@ function addNew(rec){
     }
 
     //本釜月平均
-    var pressureDiff = newTR.insertCell(6);
-    pressureDiff.innerHTML = "--";
+    var inTempDiff1 = newTR.insertCell(6);
+    inTempDiff1.innerHTML = "--";
 
     //月平均
-    var pressureDiff = newTR.insertCell(7);
-    pressureDiff.innerHTML = "--";
+    var inTempDiff2 = newTR.insertCell(7);
+    inTempDiff2.innerHTML = "--";
 
 
 
@@ -211,12 +201,12 @@ function addNew(rec){
     }
 
     //本釜月平均
-    var pressureDiff = newTR.insertCell(9);
-    pressureDiff.innerHTML = "--";
+    var outTempDiff1 = newTR.insertCell(9);
+    outTempDiff1.innerHTML = "--";
 
     //月平均
-    var pressureDiff = newTR.insertCell(10);
-    pressureDiff.innerHTML = "--";
+    var outTempDiff2 = newTR.insertCell(10);
+    outTempDiff2.innerHTML = "--";
 
 }
 

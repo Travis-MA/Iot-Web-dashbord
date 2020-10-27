@@ -2,11 +2,7 @@ var express = require('express');
 var path = require('path');
 const {resolve} = require('path');
 var ejs = require('ejs');
-const fs = require('fs');
 var OBSkit = require(resolve(__dirname,'../service/OBSkit'));
-
-
-var gb = require('json-groupby');
 
 
 var app = express();
@@ -21,8 +17,6 @@ app.get('/', function(req, res, next) {
   	res.sendFile(resolve(__dirname, '../views/zyf.html'));
   	//res.json(jsonToClient);
 });
-
-
 
 
 app.get('/datafu', function (req, res, next) {

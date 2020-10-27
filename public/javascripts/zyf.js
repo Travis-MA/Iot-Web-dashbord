@@ -4,18 +4,13 @@ $(function(){
 
   init1(1);
 $('#loading').modal('show'); 
-})
+});
 
 
-var dataPressure = new Array();
-var dataTempIn = new Array();
-var dataTempOut = new Array();
-var dataState = new Array();
-
-var fuIdMap = new Array("001","002","003","004","005","006","007");
-var presureMap = new Array("Ch6","Ch6","Ch6","Ch6","Ch6","Ch6","Ch6");
-var tempInMap = new Array("Ch5","Ch5","Ch5","Ch5","Ch5","Ch5","Ch5");
-var tempOutMap1 = new Array("Ch4","Ch4","Ch4","Ch4","Ch4","Ch4","Ch4");
+var dataPressure = [];
+var dataTempIn = [];
+var dataTempOut = [];
+var dataState = [];
 
 function generateData(jsdata,id) {
 
@@ -64,20 +59,6 @@ function generateData(jsdata,id) {
     console.log(dataState[id].valueData.length)
 }
 
-
-function resolveTime(timeStemp){
-    var year = timeStemp.substr(0,4);
-    var month = timeStemp.substr(4,2);
-    var day = timeStemp.substr(6,2);
-
-    var Tindex = timeStemp.indexOf('T');
-    var hour = timeStemp.substr(Tindex+1,2);
-    var min = timeStemp.substr(Tindex+3,2);
-    var sec = timeStemp.substr(Tindex+5,2);
-
-    now = new Date(year,month-1,day,hour,min,sec);
-    return now.setHours(now.getHours()+8);
-}
 
 
 function init1(i){

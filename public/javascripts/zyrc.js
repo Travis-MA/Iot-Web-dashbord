@@ -15,7 +15,6 @@ function addNew(rec){
   var Index = rec.index;
   var StartTime = parseInt(rec.startTime); 
   var EndTime = parseInt(rec.endTime);
-  var ban = banTime(parseInt(rec.startTime));
   var prefix = rec.prefix;
   var tb = document.getElementById('fuListTable');
 
@@ -68,21 +67,19 @@ function dateString(now){
     var yearStr = year;
     var monthStr;
     var dateStr;
-    if(month.toString().length==1){
+    if(month.toString().length===1){
       monthStr = '0'+month.toString();
     }else{
       monthStr = month.toString();
     }
 
-    if(date.toString().length==1){
+    if(date.toString().length===1){
       dateStr = '0'+date.toString();
     }else{
       dateStr = date.toString();
     }
 
-    var todayStr = yearStr+'-'+monthStr+'-'+dateStr;
-
-    return todayStr;
+    return yearStr + '-' + monthStr + '-' + dateStr;
 }
 
 function timeString(now,start){
@@ -95,7 +92,7 @@ function timeString(now,start){
 
     var min = now.getMinutes();
     var minStr;
-    if(min.toString().length==1){
+    if(min.toString().length===1){
       minStr = '0'+min.toString();
     }else{
       minStr = min.toString();
@@ -111,22 +108,11 @@ function timeString(now,start){
     }
     
   }else{     
-      return '等待出釜'; 
+      return '--';
   }
 
 }
 
-function banTime(startTime){
-  var banOffset = new Date(startTime-zeroOffset*60*60*1000);
-  var startDateStr = banOffset.getMonth()+1+'月'+banOffset.getDate()+'号';
-  var ban;
-  if(new Date(startTime).getHours()>=zeroOffset && new Date(startTime).getHours()<12+zeroOffset){
-    ban = '白班';
-  }else{
-    ban = '夜班';
-  }
-  return startDateStr+ban;
-}
 
 function diffTime(EndTime,StartTime){
 
@@ -139,7 +125,7 @@ function diffTime(EndTime,StartTime){
     if(hour<24){
        return hour+'小时'+min+'分钟';
     }else{
-       return '见次日记录';
+       return '--';
     }
 
 }
