@@ -76,16 +76,21 @@ function timeString(now, start) {
 
 }
 
-function diffTime(EndTime, StartTime) {
+function diffTime(EndTime, StartTime, mode) {
+
+    var today = new Date().getTime();
     if (!(EndTime > 0)) {
-        EndTime = new Date().getTime();
+        EndTime = today;
     }
     var time = (EndTime - StartTime) / 1000
-    var hour = Math.floor(time / 3600);
-    var min = Math.floor((time - hour * 3600) / 60);
+    //var hour = Math.floor(time / 3600);
+    var min = Math.floor(time / 60);
 
-    return hour + '小时' + min + '分钟';
-
+    if (mode === 1 && EndTime === today){
+        return '--';
+    }else {
+        return min + '分钟';
+    }
 }
 
 function generateData(jsdata, scale) {
@@ -137,20 +142,81 @@ function addNew(rec){
     //添加列:时长
     var timeLength = newTR.insertCell(1);
     //添加列内容
-    timeLength.innerHTML = diffTime(parseInt(rec.endTime)*1000, parseInt(rec.startTime)*1000);
+    timeLength.innerHTML = diffTime(parseInt(rec.endTime)*1000, parseInt(rec.startTime)*1000, 1);
 
     //压力差
     var pressureDiff = newTR.insertCell(2);
     pressureDiff.innerHTML = rec.deltaInPress;
+    if (rec.deltaInPress > 0){
+        pressureDiff.style.cssText="background-color: #FF6347;"+
+            "border-radius: 8px; color: #fdfdfd; font-weight:bold;";
+
+    }else if(rec.deltaInPress < 0){
+        pressureDiff.style.cssText="background-color: #228B22;"+
+            "border-radius: 8px; color: #fdfdfd; font-weight:bold;";
+    }else{
+        pressureDiff.style.cssText="background-color: #AFEEEE;"+
+            "border-radius: 8px;font-weight:bold;";
+    }
+
+
+    //本釜月平均
+    var pressureDiff = newTR.insertCell(3);
+    pressureDiff.innerHTML = "--";
+
+
+    //月平均
+    var pressureDiff = newTR.insertCell(4);
+    pressureDiff.innerHTML = "--";
+
 
     //内温差
-    var inTempDiff = newTR.insertCell(3);
+    var inTempDiff = newTR.insertCell(5);
     inTempDiff.innerHTML = rec.deltaInTemp;
+    if (rec.deltaInTemp > 0){
+        inTempDiff.style.cssText="background-color: #FF6347;"+
+            "border-radius: 8px; color: #fdfdfd; font-weight:bold;";
+
+    }else if(rec.deltaInTemp < 0){
+        inTempDiff.style.cssText="background-color: #228B22;"+
+            "border-radius: 8px; color: #fdfdfd; font-weight:bold;";
+    }else{
+        inTempDiff.style.cssText="background-color: #AFEEEE;"+
+            "border-radius: 8px;font-weight:bold;";
+    }
+
+    //本釜月平均
+    var pressureDiff = newTR.insertCell(6);
+    pressureDiff.innerHTML = "--";
+
+    //月平均
+    var pressureDiff = newTR.insertCell(7);
+    pressureDiff.innerHTML = "--";
+
+
 
     //外温差
-    var outTempDiff = newTR.insertCell(4);
+    var outTempDiff = newTR.insertCell(8);
     outTempDiff.innerHTML = rec.deltaOutTemp;
+    if (rec.deltaOutTemp > 0){
+        outTempDiff.style.cssText="background-color: #FF6347;"+
+            "border-radius: 8px; color: #fdfdfd; font-weight:bold;";
 
+    }else if(rec.deltaOutTemp < 0){
+        outTempDiff.style.cssText="background-color: #228B22;"+
+            "border-radius: 8px; color: #fdfdfd; font-weight:bold;";
+    }else{
+        outTempDiff.style.cssText="background-color: #AFEEEE;"+
+            "border-radius: 8px;font-weight:bold;";
+    }
+
+    //本釜月平均
+    var pressureDiff = newTR.insertCell(9);
+    pressureDiff.innerHTML = "--";
+
+    //月平均
+    var pressureDiff = newTR.insertCell(10);
+    pressureDiff.innerHTML = "--";
 
 }
 
@@ -172,7 +238,7 @@ function init1() {
         $('#name_head').text(data.FuId + "号釜");
         var startTimeStr = timeString(new Date(parseInt(data.startTime)), 0);
         var endTimeStr = timeString(new Date(parseInt(data.endTime)), new Date(parseInt(data.startTime)));
-        var diffTimeStr = diffTime(parseInt(data.endTime), parseInt(data.startTime));
+        var diffTimeStr = diffTime(parseInt(data.endTime), parseInt(data.startTime), 0);
         $('#startTime').text("记录开始时间:       " + startTimeStr);
         if (endTimeStr.length > 6) {
             $('#endTime').text("记录结束时间:       " + endTimeStr);
@@ -219,7 +285,7 @@ function init1() {
             console.log("stateAnalysis:    "+stateAnalysis)
 
             for (var i in stateList){
-                var state = stateList[i]
+                var state = stateList[i];
                 addNew(state)
             }
         }
